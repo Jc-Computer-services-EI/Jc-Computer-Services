@@ -191,7 +191,60 @@
       }
     }, 1000);
   </script>
+<script>
+  const tipoAula = document.getElementById("Tipo de Aula");
+  const nivel = document.getElementById("nivel");
+  const horario = document.getElementById("horario");
+
+  const niveisPresencial = [
+    "Nível Básico",
+    "Nível Médio",
+    "Nível Avançado"
+  ];
+
+  const niveisOnline = [
+    "Nível Avançado"
+  ];
+
+  const horariosPresencial = [
+    "08H-10H",
+    "11H-13H",
+    "14H-16H",
+    "17H-19H",
+    "19:30H-21:30H"
+  ];
+
+  const horariosOnline = [
+    "08H-10H",
+    "19:30H-21:30H"
+  ];
+
+  tipoAula.addEventListener("change", function () {
+    const tipo = this.value;
+
+    // Atualiza os níveis
+    nivel.innerHTML = '<option value="">-- Selecione --</option>';
+    const listaNiveis = tipo === "Online" ? niveisOnline : niveisPresencial;
+    listaNiveis.forEach(nvl => {
+      const opt = document.createElement("option");
+      opt.value = nvl;
+      opt.textContent = nvl;
+      nivel.appendChild(opt);
+    });
+
+    // Atualiza os horários
+    horario.innerHTML = '<option value="">-- Selecione --</option>';
+    const listaHorarios = tipo === "Online" ? horariosOnline : horariosPresencial;
+    listaHorarios.forEach(hr => {
+      const opt = document.createElement("option");
+      opt.value = hr;
+      opt.textContent = hr;
+      horario.appendChild(opt);
+    });
+  });
+</script>
 
 </body>
 
 </html>
+
